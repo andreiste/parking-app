@@ -1,0 +1,30 @@
+.widget,.not-active{
+    height: 300px;
+    width: 800px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border: black;
+    border-style: solid;
+    padding-bottom: 20px;
+}
+.widget{
+    display:flex; flex-direction:row;
+}
+
+.not-active{
+    background-color: #dcdcdc;
+}
+
+.grad-text{
+    position: absolute;
+    transform: translate(-45%, -50%);
+    top: 50%;
+    left: 50%;
+    font-size: 30px;
+}
+
+.canvas-wrapper{
+    position: relative;
+}
