@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import Chart from 'react-apexcharts';
-import './GradOcupare.css';
-import CrestereProcentuala from '../CrestereProcentuala/CrestereProcentuala';
 
 class GradOcupare extends Component {
 
@@ -65,18 +63,72 @@ class GradOcupare extends Component {
               stroke: {
                 lineCap: "round"
               },
-              labels: ["Grad de Ocupare"]
+              labels: ["Grad de Ocupare"],
+              responsive:[{
+                breakpoint: 1100,
+                options: {
+                  plotOptions: {
+                    radialBar: {
+                      dataLabels: {
+                        name: {
+                          fontSize: "8px",
+                          offsetY: -8
+                        },
+                        value: {
+                          fontSize: "12px",
+                          offsetY: -1
+                        }
+                      }
+                    }
+                  }
+                }
+              },{
+                breakpoint: 800,
+                options: {
+                  plotOptions: {
+                    radialBar: {
+                      dataLabels: {
+                        name: {
+                          fontSize: "8px",
+                          offsetY: -5
+                        },
+                        value: {
+                          fontSize: "12px",
+                          offsetY: -2
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 370,
+                options: {
+                  plotOptions: {
+                    radialBar: {
+                      hollow:{
+                        size:"60%"
+                      },
+                      dataLabels: {
+                        name: {
+                          fontSize: "6px"
+                        },
+                        value: {
+                          fontSize: "10px",
+                          offsetY: -8
+                        }
+                      }
+                    }
+                  }
+                }
+              }] 
             }
-            
         }
     }
     
     render() {
       return (
-        <div className="grad-ocup">
-          <Chart options={this.state.options} series={[this.props.ocupData.procentOcupare]} type="radialBar"/>
-          <CrestereProcentuala data={this.props.ocupData.crestereProcentuala}/>
-        </div>
+        <Chart options={this.state.options} series={[this.props.procentOcupare]} type="radialBar"/>
       );
     
     }

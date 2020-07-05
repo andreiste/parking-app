@@ -1,22 +1,24 @@
 import React from 'react';
+import './CrestereProcentuala.css';
 
 function CrestereProcentuala(props){
-    if (props.data>0){
+    if (props.crestereProcentuala>0){
         return(
-            <div>
-                <b>Indicator Crestere Ocupare: </b><b style={{color: "green"}}>+{props.data}%</b>
+            <div className="crestere">
+                <b>Indicator Crestere Ocupare: </b>
+                <b style={{color: "#0B6623"}}>+{props.crestereProcentuala}%</b>
             </div>
         ) 
-    } else if (props.data<0){
+    } else if (props.crestereProcentuala<0){
         return(
-            <div>
-                <b>Indicator Crestere Ocupare: </b><b style={{color: "#C62121"}}>{props.data}%</b>
+            <div className="crestere">
+                <b>Indicator Crestere Ocupare: </b><b style={{color: "#C62121"}}>{props.crestereProcentuala}%</b>
             </div>
         )
     } else {
         return(
-            <div>
-                <b>Indicator Crestere Ocupare: {props.data}%</b>
+            <div className="crestere">
+                <b>Indicator Crestere Ocupare: 0%</b>
             </div>
         )
     }

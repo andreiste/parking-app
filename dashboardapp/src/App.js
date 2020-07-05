@@ -1,42 +1,19 @@
 import React, {Component} from 'react';
-import './App.css';
-import AppNavbar from './Navbar/Navbar';
-import Widget from './Widget/Widget';
-import socket from './Connection/SocketConnection';
+import MainPage from './MainPage/MainPage';
+import MapPage from './MapPage/MapPage';
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      parkingData : {}
-    }
-  }
-
-  componentDidMount(){
-    socket.on('data',(data)=>{
-      const currentState = ({...this.state.parkingData});
-      currentState[data.parkingCode] = data
-      this.setState({
-        parkingData: currentState
-      })
-    })
-  }
-
-  render(){
-    let widgets = [];
-    const data = this.state.parkingData;
-    Object.entries(data).forEach(([key,value])=>{
-      widgets.push(<Widget key={key} data={value}/>)
-    })
+  render() {
     return (
-      <div className="App">
-        <AppNavbar/>
-        {widgets}
-      </div>
-    );
-
+      <Router>
+        <Switch>
+          <Route path='/' exact={true} component={MainPage}/>
+          <Route path='/map' exact={true} component={MapPage}/>
+        </Switch>
+      </Router>
+    )
   }
-  
 }
 
 export default App;
