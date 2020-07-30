@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const fs = require('fs');
+const moment = require('moment');
 mongoose.connect('mongodb://127.0.0.1/parkingData',{useNewUrlParser:true, useUnifiedTopology:true})
 const Parking = require('./schema/Parking');
 
@@ -28,6 +30,9 @@ function socketMain(io,socket){
 
     socket.on('parkingData',(data)=>{
         io.to('ui').emit('data',data);
+        let jsonContent = JSON.stringify(data);
+        let fileName = data.parkingCode + moment(data.dateTime).format('YYYYMMDDHHmmss') + '.json';
+        fs.writeFileSync('C:/data/'+fileName,jsonContent);
         console.log(data);
     })
 
